@@ -73,5 +73,19 @@ function loadBooks() {
   })
 }
 
-// loadBooks();
+function loadDb() {
+
+  client.query(`CREATE TABLE IF NOT EXISTS books(
+    book_id SERIAL PRIMARY KEY,
+    title TEXT,
+    author TEXT,
+    isbn TEXT,
+    image_url TEXT,
+    description TEXT
+  )`)
+  .then(loadBooks)
+  .catch(console.error);
+}
+
+loadBooks();
 
